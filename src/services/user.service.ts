@@ -8,7 +8,9 @@ import { signJwt } from "../utils/jwt";
 const userRepository = AppDataSource.getRepository(User);
 
 export const createUser = async (input: DeepPartial<User>) => {
-  return userRepository.save(userRepository.create(input));
+  return (await AppDataSource.manager.save(
+    AppDataSource.manager.create(User, input)
+  )) as User;
 };
 
 export const findUserByEmail = async ({ email }: { email: string }) => {

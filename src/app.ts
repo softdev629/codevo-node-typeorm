@@ -13,10 +13,10 @@ import userRouter from "./routes/user.route";
 import validateEnv from "./utils/validateEnv";
 import redisClient from "./utils/connectRedis";
 
-(async function () {
-  const credentials = nodemailer.createTestAccount();
-  console.log(credentials);
-})();
+// (async function () {
+//   const credentials = await nodemailer.createTestAccount();
+//   console.log(credentials);
+// })();
 
 AppDataSource.initialize()
   .then(async () => {

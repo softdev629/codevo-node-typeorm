@@ -31,6 +31,8 @@ export const deserializeUser = async (
       "accessTokenPublicKey"
     );
 
+    console.log(decoded);
+
     if (!decoded) {
       return next(new AppError(401, `Invalid token or user doesn't exist`));
     }

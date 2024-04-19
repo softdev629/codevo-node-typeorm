@@ -23,10 +23,11 @@ export const verifyJwt = <T>(
   keyName: "accessTokenPublicKey" | "refreshTokenPublicKey"
 ): T | null => {
   try {
-    const publickey = Buffer.from(config.get<string>(keyName)).toString(
-      "ascii"
-    );
-    const decoded = jwt.verify(token, publickey) as T;
+    const publicKey = Buffer.from(
+      config.get<string>(keyName),
+      "base64"
+    ).toString("ascii");
+    const decoded = jwt.verify(token, publicKey) as T;
 
     return decoded;
   } catch (error) {
