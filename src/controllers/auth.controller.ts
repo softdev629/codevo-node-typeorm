@@ -233,6 +233,8 @@ export const verifyEmailHandler = async (
       .update(req.params.verificationCode)
       .digest("hex");
 
+    console.log(verificationCode);
+
     const user = await findUser({ verificationCode });
 
     if (!user) {
